@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Blend Cipher — Visual Cryptography Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="logo">🎨</div>
+  <h1>Color Blend Cipher</h1>
+  <p>Visual Cryptography Lab • Text Encryption & Export</p>
+</header>
+
+<section class="key-card">
+  <div>
+    <div class="eyebrow">SECRET KEY</div>
+    <h2 id="keyTitle">Automatic Color Key</h2>
+    <p class="muted">The key is generated automatically. Keep the key code separate from the ciphertext.</p>
+  </div>
+  <div class="key-preview" id="keyPreview"></div>
+  <div class="key-code-wrap">
+    <code id="keyCode">Generating...</code>
+    <button class="small-btn" id="copyKeyBtn">📋 Copy Key</button>
+  </div>
+  <button class="small-btn" id="newKeyBtn">🔄 New Key</button>
+</section>
+
+<div class="notice">
+  <b>Security note:</b> This is a custom educational cipher. It demonstrates reversible color transformations; it is not a replacement for AES or other modern cryptography.
+</div>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="textTab">🔐 Text</button>
+</nav>
+
+<!-- TEXT TAB -->
+<section class="tab-panel active" id="textTab">
+  <div class="mode-grid">
+    <div class="panel">
+      <div class="panel-head"><div><h2>Encryption</h2><p class="muted">Use automatic multi-layer color keys.</p></div></div>
+      <label for="plaintext">Plaintext</label>
+      <textarea id="plaintext" placeholder="Enter a message..."></textarea>
+
+      <div class="row-between">
+        <div><h3>Color Layers</h3><p class="hint">The system generates several automatic colors from the secret key.</p></div>
+        <button class="small-btn" id="rotateBtn">🔄 Rotate Layers</button>
+      </div>
+      <div id="layerList" class="layer-list"></div>
+
+      <label class="check"><input type="checkbox" id="perCharKey"> Enable key rotation per character</label>
+
+      <button class="main-btn" id="encryptBtn">🔒 Encrypt Text</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><div><h2>Decryption</h2><p class="muted">Paste ciphertext and provide the secret key.</p></div></div>
+      <label for="ciphertext">Encrypted Data</label>
+      <textarea id="ciphertext" placeholder="Paste exported .cbc JSON here..."></textarea>
+
+      <label for="decryptKey">Secret Key Code</label>
+      <div class="inline">
+        <input id="decryptKey" class="text-input" placeholder="CBC-...">
+        <button class="small-btn" id="useCurrentKeyBtn">Use Current</button>
+      </div>
+
+      <button class="main-btn" id="decryptBtn">🔓 Decrypt Text</button>
+
+      <label for="decryptOutput">Decrypted Text</label>
+      <textarea id="decryptOutput" readonly placeholder="Original message..."></textarea>
+    </div>
+  </div>
+
+  <div class="panel visualization">
+    <div class="row-between">
+      <div><h2>🌈 Cipher Colors</h2><p class="muted">Each block represents an encrypted character.</p></div>
+      <div class="inline">
+        <button class="small-btn" id="toggleRgbBtn">Show RGB</button>
+        <button class="small-btn" id="copyCipherBtn">📋 Copy Data</button>
+        <button class="small-btn" id="downloadCbcBtn">⬇ Download .cbc</button>
+      </div>
+    </div>
+    <div id="cipherColors" class="cipher-colors"><p class="empty">Encrypt text to see the color ciphertext.</p></div>
+  </div>
+
+  <div class="panel">
+    <h2>🔬 Encryption Visualization</h2>
+    <div id="stepViewer" class="step-viewer"><p class="empty">Encrypt a message to inspect the transformation.</p></div>
+  </div>
+</section>
+
+
+<footer>Color Blend Cipher • Educational Cryptography Project</footer>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
