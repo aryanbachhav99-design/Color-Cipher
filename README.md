@@ -1,5 +1,7 @@
 # Color Cipher
+## Live Demo
 
+[Open Color Cipher](https://aryanbachhav99-design.github.io/Color-Cipher/)
 A web-based encryption and decryption project that uses colors
 to represent encrypted information.
 
